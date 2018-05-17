@@ -652,3 +652,116 @@ textarea.form-control-custom {
     min-height: 70px;
     width: 450px;
 }
+
+/*for dashboard buttons*/
+.btn-dgreen { 
+  color: #ffffff; 
+  background-color: #0DB548; 
+  border-color: #026926; 
+}
+
+.btn-dgreen:hover, 
+.btn-dgreen:focus, 
+.btn-dgreen:active, 
+.btn-dgreen.active, 
+.open .dropdown-toggle.btn-dgreen { 
+  color: #ffffff; 
+  background-color: #287A24; 
+  border-color: #026926; 
+} 
+ 
+/*.btn-dgreen:active, 
+.btn-dgreen.active, 
+.open .dropdown-toggle.btn-dgreen { 
+  background-image: none; 
+} */
+
+.btn-dgreen.disabled, 
+.btn-dgreen[disabled], 
+fieldset[disabled] .btn-dgreen, 
+.btn-dgreen.disabled:hover, 
+.btn-dgreen[disabled]:hover, 
+fieldset[disabled] .btn-dgreen:hover, 
+.btn-dgreen.disabled:focus, 
+.btn-dgreen[disabled]:focus, 
+fieldset[disabled] .btn-dgreen:focus, 
+.btn-dgreen.disabled:active, 
+.btn-dgreen[disabled]:active, 
+fieldset[disabled] .btn-dgreen:active, 
+.btn-dgreen.disabled.active, 
+.btn-dgreen[disabled].active, 
+fieldset[disabled] .btn-dgreen.active { 
+  background-color: #0DB548; 
+  border-color: #026926; 
+} 
+ 
+/*.btn-dgreen .badge { 
+  color: #0DB548; 
+  background-color: #ffffff; 
+}*/
+
+/* Font Size For Button Text */
+.glyphsize {
+    font-size:48px !important;
+}
+
+/* Colours Used for Glyphicons and some text */
+/*.black { color: #000;}
+.red { color: #F00; }
+.dgreen { color: #060; }
+.green { color: #0F0; }
+.blue { color: #00F; }
+.mblue { color: #09F; }
+.yellow { color: #FF0;}
+.purple { color: #609;}
+.lilac { color: #C6F; }
+.orange { color: #F90; }
+.choc { color: #330;}
+*/
+
+/*btn-lilac*/
+.btn-lilac { 
+  color: #ffffff; 
+  background-color: #B07EF2; 
+  border-color: #7B6CC7; 
+} 
+ 
+.btn-lilac:hover, 
+.btn-lilac:focus, 
+.btn-lilac:active, 
+.btn-lilac.active, 
+.open .dropdown-toggle.btn-lilac { 
+  color: #ffffff; 
+  background-color: #6D4B99; 
+  border-color: #7B6CC7; 
+} 
+ 
+.btn-lilac:active, 
+.btn-lilac.active, 
+.open .dropdown-toggle.btn-lilac { 
+  background-image: none; 
+} 
+ 
+.btn-lilac.disabled, 
+.btn-lilac[disabled], 
+fieldset[disabled] .btn-lilac, 
+.btn-lilac.disabled:hover, 
+.btn-lilac[disabled]:hover, 
+fieldset[disabled] .btn-lilac:hover, 
+.btn-lilac.disabled:focus, 
+.btn-lilac[disabled]:focus, 
+fieldset[disabled] .btn-lilac:focus, 
+.btn-lilac.disabled:active, 
+.btn-lilac[disabled]:active, 
+fieldset[disabled] .btn-lilac:active, 
+.btn-lilac.disabled.active, 
+.btn-lilac[disabled].active, 
+fieldset[disabled] .btn-lilac.active { 
+  background-color: #B07EF2; 
+  border-color: #7B6CC7; 
+} 
+ 
+.btn-lilac .badge { 
+  color: #B07EF2; 
+  background-color: #ffffff; 
+}

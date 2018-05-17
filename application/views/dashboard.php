@@ -15,9 +15,13 @@
                 <div class="col-lg-12">
                     <h3 class="page-header">Dashboard</h3>
                 </div>
-                <div class="col-lg-12">
-                    <div class="row text-center">
-                        Dashboard Content..
+                <br>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <a href="<?=base_url('admin/user_list')?>/" class="btn btn-lilac btn-lg" role="button"><i class="fa fa-user glyphsize"></i> <br/>User List</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <a href="<?=base_url('admin/activity_log')?>/" class="btn btn-lilac btn-lg" role="button"><i class="glyphicon glyphicon-user glyphsize"></i> <br/>Activity Log</a>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -29,9 +33,6 @@
 
     </div>
     <!-- wrapper -->
-            
-
-
 
 
 

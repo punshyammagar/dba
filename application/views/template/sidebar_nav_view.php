@@ -17,14 +17,21 @@
                             </li>
                         <?php endif; ?>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Other Menu Sample<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Record consumer data<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li> <a href="#">&raquo; Other Sub Menu 1</a> </li>
-                                <li> <a href="#">&raquo; Other Sub Menu 2</a> </li>
+                                <li> <a href="<?=base_url('customer/customer_list')?>">&raquo; Customer data</a> </li>
+                                <li> <a href="<?=base_url('customer/customer_visit_record')?>">&raquo; Record of visit</a> </li>
                             </ul>
                         </li>
-                  
-                        
+                        <li>
+                            <a href="#"><i class="fa fa-cutlery fa-fw"></i> Nutrition plan</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Exercise plan</a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url('customer/reports')?>"><i class="fa fa-user fa-fw"></i> Reports</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

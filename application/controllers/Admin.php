@@ -37,6 +37,7 @@ class Admin extends CI_Controller {
         $this->load->view('template/header_view');
         $this->load->view('template/sidebar_nav_view');
         $this->load->view('admin/user_list', $data);
+        $this->load->view('dietitian/customer_data', $data);
 
     }
 
