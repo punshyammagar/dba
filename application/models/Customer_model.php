@@ -13,42 +13,46 @@ class Customer_model extends CI_Model {
 
     function get_customer_list(){
         $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('status', 1);
+        $this->db->from('customer');
         $query=$this->db->get();
         return $query->result();
     }
 
-    function get_user_by_id($userID){
+    function get_customer_by_id($customerID){
         $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('user_id', $userID);
+        $this->db->from('customer');
+        $this->db->where('customer_id', $customerID);
         $query=$this->db->get();
         return $query->result_array();
     }
 
-    function insert_user($postData){
+    function validate_email($postData){
+        $this->db->where('email', $postData['email']);
+        $this->db->from('customer');
+        $query=$this->db->get();
 
-        $validate = $this->validate_email($postData);
+        if ($query->num_rows() == 0)
+            return true;
+        else
+            return false;
+    }
+
+    function insert_customer($postData){
+        $id = $this->session->userdata('user_id');
+
+       $validate = $this->validate_email($postData);
 
         if($validate){
-            $password = $this->generate_password();
             $data = array(
+                'fk_user_id' => $id,
+                'first_name' => $postData['name'],
+                'last_name' =>$postData['lname'],
+                'dob' => $postData['dob'],
+                'phone' =>$postData['phone'],
                 'email' => $postData['email'],
-                'name' => $postData['name'],
-                'role' => $postData['role'],
-                'password' => md5($password),
-                'created_at' => date('Y\-m\-d\ H:i:s A'),
+                'address' =>$postData['address'],
             );
-            $this->db->insert('user', $data);
-
-            $message = "Here is your account details:<br><br>Email: ".$postData['email']."<br>Tempolary password: ".$password."<br>Please change your password after login.<br><br> you can login at ".base_url().".";
-            $subject = "New Account Creation";
-            $this->send_email($message,$subject,$postData['email']);
-
-            $module = "User Management";
-            $activity = "add new user ".$postData['email'];
-            $this->insert_log($activity, $module);
+            $this->db->insert('customer', $data);
             return array('status' => 'success', 'message' => '');
 
         }else{

@@ -32,12 +32,13 @@
 
 	<div class="container">
 	    <div class="row">
-	        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4" style="margin: auto 30%"><!--<div class="col-md-4 col-md-offset-4">-->
+	        
+	        <div class="col-md-4 col-md-offset-4">
 	            <div class="login-panel panel panel-default">
 	                <div class="panel-heading">
 	                    <h3 class="panel-title"> Diabetes Control Australia - Please Sign In</h3>
 	                </div>
-	                <!--<div class="panel-body">-->
+	                <div class="panel-body">
 	                	<small id="login-empty-input" class="error">Email or password cannot be empty <br>&nbsp;</small>
 	                	<?php if($alert): ?>
 	                		<small id="login-invalid-input" class="error">Invalid email or password<br>&nbsp;</small>
@@ -57,7 +58,7 @@
 	                            <input id="login-submit" type="submit" value="Login" class="btn btn-lg btn-success btn-block">
 	                        </fieldset>
 	                    </form>
-	                <!--</div>-->
+	                </div>
 	            </div>
 	        </div>
 	    </div>

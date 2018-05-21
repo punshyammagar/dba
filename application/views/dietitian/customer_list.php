@@ -25,23 +25,26 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-user-list">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>DOB</th>
+                                <th>Phone</th>
                                 <th>Email</th>
-                                <th>Role</th>
+                                <th>Address</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($users  as $row): ?>
+                            <?php foreach($customers  as $row): ?>
                             <tr>
-                                <td><?php echo $row->name; ?></td> 
+                                <td><?php echo $row->first_name; ?></td>
+                                <td><?php echo $row->last_name; ?></td>
+                                <td><?php echo $row->dob; ?></td>
+                                <td><?php echo $row->phone; ?></td>    
                                 <td><?php echo $row->email; ?></td>
-                                <td><?php echo ucfirst($row->role) ?></td> 
-                                
+                                <td><?php echo $row->address; ?></td>  
                                 <td>
-                                    <a class="btn btn-primary" id="user-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->user_id?>','<?=$row->name?>','<?=$row->role?>');" data-toggle="modal" data-target="#editUser"> EDIT </a>
-                                    <a class="btn btn-warning" id="user-riset" onclick="reset_confirmation('<?=$row->email?>','<?=$row->user_id?>')" data-toggle="modal" data-target="#resetConfirm"> RESET </a>
-                                    <a class="btn btn-danger" id="user-delete" onclick="deactivate_confirmation('<?=$row->email?>','<?=$row->user_id?>');" data-toggle="modal" data-target="#deactivateConfirm"> DELETE </a>
+                                    <a class="btn btn-primary" id="user-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#newHealthDataSubmit"> Add Health Data </a>
                                     
                                 </td>
 
@@ -50,10 +53,6 @@
                             
                         </tbody>
                     </table>
-
-                    <div class="col-lg-12" style="position:fixed;bottom: 5%;left: 88%; width: 150px;text-align: center;border-radius: 100%;">
-                        <img class="add_user" src="<?=base_url()?>assets/images/add.png" data-toggle="modal" data-target="#addUser" />
-                    </div>
 
                 </div>
                 <!-- /.col-lg-12 -->

@@ -96,7 +96,7 @@
                     </div>
                     <div class="modal-body">
                         <label>You are going to reset user <label id="reset-user-email" style="color:blue;"></label>'s password.</label><br/>
-                        <label>Tempolary password will be sent to this email.</label><br/>
+                        <label>Temporary password will be sent to this email.</label><br/>
                         <label>Click <b>Yes</b> to continue.</label>
                     </div>
                     <div class="modal-footer">
@@ -148,7 +148,7 @@
                                     <select name="role" id="role" class="form-control" >
                                         <option value="0" selected="selected">-- SELECT ROLE --</option>
                                         <option value="admin">Admin</option>
-                                        <option value="user">User</option>
+                                        <option value="dietitian">Dietitian</option>
                                     </select> 
                                 </div>
                             </div>

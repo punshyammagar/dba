@@ -14,12 +14,18 @@ class Customer extends CI_Controller {
         $this->load->model('customer_model');
     }
     
+    private function ajax_checking(){
+        if (!$this->input->is_ajax_request()) {
+            redirect(base_url());
+        }
+    }
+
     public function customer_list(){
 
         $data = array(
             'formTitle' => 'Customer Management',
             'title' => 'Customer Management',
-            'users' => $this->customer_model->get_customer_list(),
+            'customers' => $this->customer_model->get_customer_list(),
         );
 
         $this->load->view('template/header_view');
@@ -54,6 +60,16 @@ class Customer extends CI_Controller {
         $this->load->view('template/sidebar_nav_view');
         $this->load->view('dietitian/reports', $data);
 
+    }
+
+    function add_customer() {
+        $this->ajax_checking();
+
+        $postData = $this->input->post();
+        $insert = $this->customer_model->insert_customer($postData);
+        if($insert['status'] == 'success')
+            $this->session->set_flashdata('success', 'Customer '.$postData['name']. ' has been successfully created!');
+        echo json_encode($insert);
     }
 
 }
