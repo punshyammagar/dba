@@ -33,7 +33,7 @@ class Authentication extends CI_Controller {
         if ($validate){
             $newdata = array(
                 'email'     => $validate[0]->email,
-                'name' => $validate[0]->name,
+                'name' => $validate[0]->first_name,
                 'role' => $validate[0]->role,
                 'user_id' => $validate[0]->user_id,
                 'logged_in' => TRUE,

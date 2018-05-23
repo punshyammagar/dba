@@ -7,12 +7,16 @@
         $("#error_email3").hide();
         $("#error_name").hide();
         $("#error_name2").hide();
+        $("#error_lname").hide();
+        $("#error_lname2").hide();
         $("#error_role").hide();
         $("#edit-error_email").hide();
         $("#edit-error_email2").hide();
         $("#edit-error_email3").hide();
         $("#edit-error_name").hide();
         $("#edit-error_name2").hide();
+        $("#edit-error_lname").hide();
+        $("#edit-error_lname2").hide();
         $("#edit-error_role").hide();
         hide_loading();
     }
@@ -29,10 +33,11 @@
         });
      } );
 
-    function edit_user_popup(email,id,name,role){
+    function edit_user_popup(email,id,fname,lname,role){
         $( "#edit-email" ).val(email);
         $( "#edit-user-id" ).val(id);
-        $( "#edit-name" ).val(name);
+        $( "#edit-name" ).val(fname);
+        $("#edit-lname").val(lname);
         if(role=='admin')
             roleOption = "<option value='admin' selected>Admin</option><option value='user'>User</option>";
         else
@@ -93,6 +98,7 @@
         show_loading();
         var i=0;
         var name = $('#edit-name').val().trim();
+        var lname = $('#edit-lname').val().trim();
         var email = $('#edit-email').val().trim();
         var role = $('#edit-role').val();
 
@@ -103,6 +109,15 @@
         }
         else if (!name.match(/^[A-Za-z0-9\s]+$/)) {
             $("#edit-error_name2").show();
+            i++;
+        }
+
+        if(lname == ""){
+            $("#edit-error_lname").show();
+            i++;
+        }
+        else if (!lname.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_lname2").show();
             i++;
         }
 
@@ -126,7 +141,7 @@
                 traditional: true,
                 type: "post",
                 dataType: "text",
-                data: {email: email, id:id, name:name, role:role},
+                data: {email: email, id:id, name:name, lname:lname, role:role},
                 success: function (result) {
                     var result = $.parseJSON(result);
                     if(result.status=='success'){
@@ -155,6 +170,7 @@
         show_loading();
         var i=0;
         var name = $('#name').val().trim();
+        var lname = $('#lname').val().trim();
         var email = $('#email').val().trim();
         var role = $('#role').val();
 
@@ -164,6 +180,15 @@
         }
         else if (!name.match(/^[A-Za-z0-9\s]+$/)) {
             $("#error_name2").show();
+            i++;
+        }
+
+        if(lname == ""){
+            $("#error_lname").show();
+            i++;
+        }
+        else if (!lname.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#error_lname2").show();
             i++;
         }
 
@@ -187,7 +212,7 @@
                 traditional: true,
                 type: "post",
                 dataType: "text",
-                data: {email:email, role:role, name:name},
+                data: {email:email, role:role, name:name, lname:lname},
                 success: function (result) {
                     var result = $.parseJSON(result);
                     if(result.status=='success'){

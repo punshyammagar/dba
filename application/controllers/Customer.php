@@ -12,6 +12,7 @@ class Customer extends CI_Controller {
             redirect(base_url());
         }
         $this->load->model('customer_model');
+        $this->load->model('healthdata_model');
     }
     
     private function ajax_checking(){
@@ -39,12 +40,25 @@ class Customer extends CI_Controller {
         $data = array(
             'formTitle' => 'Customer Visit Record',
             'title' => 'Customer Visit Record',
-            //'users' => $this->customer_model->get_customer_list(),
         );
 
         $this->load->view('template/header_view');
         $this->load->view('template/sidebar_nav_view');
         $this->load->view('dietitian/customer_visit_record', $data);
+
+    }
+
+    public function customer_health_record(){
+
+        $data = array(
+            'formTitle' => 'Customer Health Record',
+            'title' => 'Customer Health Record',
+            //'users' => $this->customer_model->get_customer_list(),
+        );
+
+        $this->load->view('template/header_view');
+        $this->load->view('template/sidebar_nav_view');
+        $this->load->view('dietitian/customer_health_record', $data);
 
     }
 
@@ -72,6 +86,26 @@ class Customer extends CI_Controller {
         echo json_encode($insert);
     }
 
+    function add_health_data() {
+        $this->ajax_checking();
+
+        $postData = $this->input->post();
+        $insert = $this->healthdata_model->insert_health_data($postData);
+        if($insert['status'] == 'success')
+            $this->session->set_flashdata('success', 'Health data has been successfully recorded!');
+        echo json_encode($insert);
+    }
+
+    function update_customer_details(){
+        $this->ajax_checking();
+
+        $postData = $this->input->post();
+        $update = $this->customer_model->update_customer_details($postData);
+        if($update['status'] == 'success')
+            $this->session->set_flashdata('success', 'Customer '.$postData['name'].'`s details have been successfully updated!');
+
+        echo json_encode($update);
+    }
 }
 
 /* End of file */

@@ -21,6 +21,7 @@
                             <ul class="nav nav-second-level">
                                 <li> <a href="<?=base_url('customer/customer_list')?>">&raquo; Customer data</a> </li>
                                 <li> <a href="<?=base_url('customer/customer_visit_record')?>">&raquo; Record of visit</a> </li>
+                                <li> <a href="<?=base_url('customer/customer_health_record')?>">&raquo; Record of health data</a> </li>
                             </ul>
                         </li>
                         <li>

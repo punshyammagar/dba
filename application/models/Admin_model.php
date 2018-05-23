@@ -47,16 +47,17 @@ class Admin_model extends CI_Model {
             $password = $this->generate_password();
             $data = array(
                 'email' => $postData['email'],
-                'name' => $postData['name'],
+                'first_name' => $postData['name'],
+                'last_name' => $postData['lname'],
                 'role' => $postData['role'],
                 'password' => md5($password),
                 'created_at' => date('Y\-m\-d\ H:i:s A'),
             );
             $this->db->insert('user', $data);
 
-            $message = "Here is your account details:<br><br>Email: ".$postData['email']."<br>Tempolary password: ".$password."<br>Please change your password after login.<br><br> you can login at ".base_url().".";
-            $subject = "New Account Creation";
-            $this->send_email($message,$subject,$postData['email']);
+            //$message = "Here is your account details:<br><br>Email: ".$postData['email']."<br>Tempolary password: ".$password."<br>Please change your password after login.<br><br> you can login at ".base_url().".";
+            //$subject = "New Account Creation";
+            //$this->send_email($message,$subject,$postData['email']);
 
             $module = "User Management";
             $activity = "add new user ".$postData['email'];
@@ -81,13 +82,14 @@ class Admin_model extends CI_Model {
         if($validate){
             $data = array(
                 'email' => $postData['email'],
-                'name' => $postData['name'],
+                'first_name' => $postData['name'],
+                'last_name' => $postData['lname'],
                 'role' => $postData['role'],
             );
             $this->db->where('user_id', $postData['id']);
             $this->db->update('user', $data);
 
-            $record = "(".$oldData[0]['email']." to ".$postData['email'].", ".$oldData[0]['name']." to ".$postData['name'].",".$oldData[0]['role']." to ".$postData['role'].")";
+            $record = "(".$oldData[0]['email']." to ".$postData['email'].", ".$oldData[0]['first_name']." to ".$postData['name'].", ".$oldData[0]['last_name']." to ".$postData['lname'].",".$oldData[0]['role']." to ".$postData['role'].")";
 
             $module = "User Management";
             $activity = "update user ".$oldData[0]['email']."`s details ".$record;
@@ -124,9 +126,9 @@ class Admin_model extends CI_Model {
         $this->db->where('user_id', $id);
         $this->db->update('user', $data);
 
-        $message = "Your account password has been reset.<br><br>Email: ".$email."<br>Tempolary password: ".$password."<br>Please change your password after login.<br><br> you can login at ".base_url().".";
-        $subject = "Password Reset";
-        $this->send_email($message,$subject,$email);
+        // $message = "Your account password has been reset.<br><br>Email: ".$email."<br>Tempolary password: ".$password."<br>Please change your password after login.<br><br> you can login at ".base_url().".";
+        // $subject = "Password Reset";
+        // $this->send_email($message,$subject,$email);
 
         $module = "User Management";
         $activity = "reset user ".$email."`s password";
@@ -146,7 +148,7 @@ class Admin_model extends CI_Model {
         $id = $this->session->userdata('user_id');
 
         $data = array(
-            'fk_user_id' => $id,
+            'user_id' => $id,
             'activity' => $activity,
             'module' => $module,
             'created_at' => date('Y\-m\-d\ H:i:s A')
@@ -219,7 +221,7 @@ class Admin_model extends CI_Model {
         }
         
         // Select Data
-        $this->db->join('user', 'activity_log.fk_user_id = user.user_id', 'left');
+        $this->db->join('user', 'activity_log.user_id = user.user_id', 'left');
         $this->db->select('SQL_CALC_FOUND_ROWS '.str_replace(' , ', ' ', implode(', ', $aColumnsJoin)), false);
         $rResult = $this->db->get($sTable);
     

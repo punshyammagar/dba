@@ -44,7 +44,7 @@ class Customer_model extends CI_Model {
 
         if($validate){
             $data = array(
-                'fk_user_id' => $id,
+                'dietitian_id' => $id,
                 'first_name' => $postData['name'],
                 'last_name' =>$postData['lname'],
                 'dob' => $postData['dob'],
@@ -61,9 +61,9 @@ class Customer_model extends CI_Model {
 
     }
 
-    function update_user_details($postData){
+    function update_customer_details($postData){
 
-        $oldData = $this->get_user_by_id($postData['id']);
+        $oldData = $this->get_customer_by_id($postData['customerid']);
 
         if($oldData[0]['email'] == $postData['email'])
             $validate = true;
@@ -72,18 +72,18 @@ class Customer_model extends CI_Model {
 
         if($validate){
             $data = array(
+                'dietitian_id' => $postData['dietitianid'],
+                'first_name' => $postData['name'],
+                'last_name' =>$postData['lname'],
+                'dob' => $postData['dob'],
+                'phone' =>$postData['phone'],
                 'email' => $postData['email'],
-                'name' => $postData['name'],
-                'role' => $postData['role'],
+                'address' =>$postData['address'],
             );
-            $this->db->where('user_id', $postData['id']);
-            $this->db->update('user', $data);
+            $this->db->where('customer_id', $postData['customerid']);
+            $this->db->update('customer', $data);
 
-            $record = "(".$oldData[0]['email']." to ".$postData['email'].", ".$oldData[0]['name']." to ".$postData['name'].",".$oldData[0]['role']." to ".$postData['role'].")";
-
-            $module = "User Management";
-            $activity = "update user ".$oldData[0]['email']."`s details ".$record;
-            $this->insert_log($activity, $module);
+            $record = "(".$oldData[0]['dietitian_id']." to ".$postData['dietitianid'].", ".$oldData[0]['first_name']." to ".$postData['name'].", ".$oldData[0]['last_name']." to ".$postData['lname'].", ".$oldData[0]['dob']." to ".$postData['dob'].", ".$oldData[0]['phone']." to ".$postData['phone'].",".$oldData[0]['email']." to ".$postData['email'].",".$oldData[0]['address']." to ".$postData['address'].")";
             return array('status' => 'success', 'message' => $record);
         }else{
             return array('status' => 'exist', 'message' => '');

@@ -22,40 +22,44 @@
             <?php endif;?>
             <div class="row">
                 <div class="col-lg-12">      
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-user-list">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-customer-list">
                         <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>DOB</th>
+                                <th>Phone</th>
+                                <th>Age</th>
+                                <th>Weight</th>
+                                <th>Height</th>
+                                <th>Waist</th>
+                                <th>Glucose</th>
+                                <th>BP</th>
+                                <th>Dyslipidemia</th>
+                                <th>Recorded</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($users  as $row): ?>
+                            <!-- <?php foreach($customers  as $row): ?> -->
                             <tr>
                                 <td><?php echo $row->first_name; ?></td>
-                                <td><?php echo $row->last_name; ?></td> 
-                                <td><?php echo $row->email; ?></td>
-                                <td><?php echo ucfirst($row->role) ?></td> 
-                                
+                                <td><?php echo $row->last_name; ?></td>
+                                <td><?php echo $row->dob; ?></td>
+                                <td><?php echo $row->phone; ?></td>    
+                                <td><?php echo $row->age; ?></td>
+                                <td><?php echo $row->address; ?></td>  
                                 <td>
-                                    <a class="btn btn-primary" id="user-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->user_id?>','<?=$row->first_name?>','<?=$row->last_name?>','<?=$row->role?>');" data-toggle="modal" data-target="#editUser"> EDIT </a>
-                                    <a class="btn btn-warning" id="user-riset" onclick="reset_confirmation('<?=$row->email?>','<?=$row->user_id?>')" data-toggle="modal" data-target="#resetConfirm"> RESET </a>
-                                    <a class="btn btn-danger" id="user-delete" onclick="deactivate_confirmation('<?=$row->email?>','<?=$row->user_id?>');" data-toggle="modal" data-target="#deactivateConfirm"> DELETE </a>
+                                    <a class="btn btn-primary" id="health-data-add"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#newHealthDataSubmit"> Add Health Data </a>
+                                    <a class="btn btn-primary" id="health-data-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#editHealthData"> Edit Health Data </a>
                                     
                                 </td>
 
                             </tr>
-                            <?php endforeach; ?>
+                            <!-- <?php endforeach; ?> -->
                             
                         </tbody>
                     </table>
-
-                    <div class="col-lg-12" style="position:fixed;bottom: 5%;left: 88%; width: 150px;text-align: center;border-radius: 100%;">
-                        <img class="add_user" src="<?=base_url()?>assets/images/add.png" data-toggle="modal" data-target="#addUser" />
-                    </div>
 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -98,7 +102,7 @@
                     </div>
                     <div class="modal-body">
                         <label>You are going to reset user <label id="reset-user-email" style="color:blue;"></label>'s password.</label><br/>
-                        <label>Temporary password will be sent to this email.</label><br/>
+                        <label>Tempolary password will be sent to this email.</label><br/>
                         <label>Click <b>Yes</b> to continue.</label>
                     </div>
                     <div class="modal-footer">
@@ -126,18 +130,10 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>First Name</label> &nbsp;&nbsp;
+                                    <label>Name</label> &nbsp;&nbsp;
                                     <label class="error" id="error_name"> field is required.</label>
-                                    <label class="error" id="error_name2"> first name must be alphanumeric.</label>
-                                    <input class="form-control" id="name" placeholder="First Name" name="name" type="text" autofocus>
-                                </div> 
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Last Name</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_lname"> field is required.</label>
-                                    <label class="error" id="error_lname2"> last name must be alphanumeric.</label>
-                                    <input class="form-control" id="lname" placeholder="Last Name" name="lname" type="text" autofocus>
+                                    <label class="error" id="error_name2"> name must be alphanumeric.</label>
+                                    <input class="form-control" id="name" placeholder="Name" name="name" type="text" autofocus>
                                 </div> 
                             </div>
                             <div class="col-lg-6">
@@ -158,7 +154,7 @@
                                     <select name="role" id="role" class="form-control" >
                                         <option value="0" selected="selected">-- SELECT ROLE --</option>
                                         <option value="admin">Admin</option>
-                                        <option value="dietitian">Dietitian</option>
+                                        <option value="user">User</option>
                                     </select> 
                                 </div>
                             </div>
@@ -177,57 +173,78 @@
         <!-- /.modal -->
 
 
-        <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editHealthData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header modal-blue">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">UPDATE USER DETAILS</h4>
+                        <h4 class="modal-title" id="myModalLabel">UPDATE HEALTH DATA</h4>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden"  id="edit-user-id" value=""/>
+                        <input type="hidden"  id="edit-health-data" value=""/>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>First Name</label> &nbsp;&nbsp;
-                                    <label class="error" id="edit-error_name"> field is required.</label>
-                                    <label class="error" id="edit-error_name2"> first name must be alphanumeric.</label>
-                                    <input class="form-control" id="edit-name" placeholder="First Name" name="edit-name" type="text" autofocus>
+                                    <label>Weight</label> &nbsp;&nbsp;
+                                    <label class="error" id="edit-error_weight"> field is required.</label>
+                                    <label class="error" id="edit-error_weight2"> weight must be numeric.</label>
+                                    <input class="form-control" id="edit-weight" placeholder="Weight" name="edit-weight" type="text" autofocus>
                                 </div> 
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Last Name</label> &nbsp;&nbsp;
-                                    <label class="error" id="edit-error_lname"> field is required.</label>
-                                    <label class="error" id="edit-error_lname2"> last name must be alphanumeric.</label>
-                                    <input class="form-control" id="edit-lname" placeholder="Last Name" name="edit-lname" type="text" autofocus>
+                                    <label>Height</label> &nbsp;&nbsp;
+                                    <label class="error" id="edit-error_height"> field is required.</label>
+                                    <label class="error" id="edit-error_height2"> height must be numeric.</label>
+                                    <input class="form-control" id="edit-height" placeholder="Height" name="edit-height" type="text" autofocus>
                                 </div> 
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Email</label> &nbsp;&nbsp;
-                                    <label class="error" id="edit-error_email"> field is required.</label>
-                                    <label class="error" id="edit-error_email2"> email has already exist.</label>
-                                    <label class="error" id="edit-error_email3"> invalid email adress.</label>
-                                    <input class="form-control" id="edit-email" placeholder="E-mail" name="edit-email" type="email" autofocus>
+                                    <label>Age</label> &nbsp;&nbsp;
+                                    <label class="error" id="edit-error_age"> field is required.</label>
+                                    <label class="error" id="edit-error_age2"> age must be numeric.</label>
+                                    <input class="form-control" id="edit-age" placeholder="Age" name="edit-age" type="text" autofocus>
                                 </div> 
                             </div>
-                      </div>
-                      <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Role</label>&nbsp;&nbsp;
-                                    <label class="error" id="edit-error_role"> field is required.</label>
-                                    <select name="role" id="edit-role" class="form-control" >
-                                    </select> 
-                                </div>
+                                    <label>Waist</label> &nbsp;&nbsp;
+                                    <label class="error" id="edit-error_waist"> field is required.</label>
+                                    <label class="error" id="edit-error_waist2"> waist must be numeric.</label>
+                                    <input class="form-control" id="edit-waist" placeholder="Waist" name="edit-waist" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Glucose Level</label> &nbsp;&nbsp;
+                                    <label class="error" id="edit-error_gl"> field is required.</label>
+                                    <label class="error" id="edit-error_gl2"> glucose level must be numeric.</label>
+                                    <input class="form-control" id="edit-gl" placeholder="Glucose Level" name="edit-gl" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Blood Pressure</label> &nbsp;&nbsp;
+                                    <label class="error" id="edit-error_bp"> field is required.</label>
+                                    <label class="error" id="edit-error_bp2"> blood pressure must be numeric.</label>
+                                    <input class="form-control" id="edit-bp" placeholder="Blood Pressure" name="edit-bp" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Dyslipidemia Level</label> &nbsp;&nbsp;
+                                    <label class="error" id="edit-error_dl"> field is required.</label>
+                                    <label class="error" id="edit-error_dl2"> dyslipidemia level must be numeric.</label>
+                                    <input class="form-control" id="edit-dl" placeholder="Dyslipidemia Level" name="edit-dl" type="text" autofocus>
+                                </div> 
                             </div>
                       </div>
                         
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
-                        <button id="editUserSubmit" type="button" class="btn btn-primary">UPDATE</button>
+                        <button id="editHealthDataSubmit" type="button" class="btn btn-primary">UPDATE</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -238,4 +255,4 @@
        
         <!-- /#page-wrapper -->
         <?php $this->load->view('template/footer_view')?>
-        <script src="<?=base_url()?>assets/js/view/user_list.js"></script>
+        <script src="<?=base_url()?>assets/js/view/consumer_visit_record.js"></script>
