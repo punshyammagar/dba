@@ -41,14 +41,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <?php foreach($customers  as $row): ?> -->
+                            <?php foreach($healthrecord  as $row): ?>
                             <tr>
                                 <td><?php echo $row->first_name; ?></td>
                                 <td><?php echo $row->last_name; ?></td>
                                 <td><?php echo $row->dob; ?></td>
                                 <td><?php echo $row->phone; ?></td>    
                                 <td><?php echo $row->age; ?></td>
-                                <td><?php echo $row->address; ?></td>  
+                                <td><?php echo $row->weight; ?></td>  
+                                <td><?php echo $row->height; ?></td>  
+                                <td><?php echo $row->waist; ?></td>  
+                                <td><?php echo $row->glucose_level; ?></td>  
+                                <td><?php echo $row->blood_pressure; ?></td> 
+                                <td><?php echo $row->dyslipidemia_level; ?></td>  
+                                <td><?php echo $row->date; ?></td>  
                                 <td>
                                     <a class="btn btn-primary" id="health-data-add"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#newHealthDataSubmit"> Add Health Data </a>
                                     <a class="btn btn-primary" id="health-data-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#editHealthData"> Edit Health Data </a>
@@ -56,7 +62,7 @@
                                 </td>
 
                             </tr>
-                            <!-- <?php endforeach; ?> -->
+                            <?php endforeach; ?>
                             
                         </tbody>
                     </table>
@@ -66,111 +72,7 @@
             </div>
             <!-- /.row -->
         </div>
-
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="deactivateConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modal-red">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">DELETE CONFIRMATION</h4>
-                    </div>
-                    <div class="modal-body">
-                        <label>You are going to delete user <label id="user-email" style="color:blue;"></label>.</label><br/>
-                        <label>Click <b>Yes</b> to continue.</label>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <a id="deactivateYesButton" class="btn btn-danger" >Yes</a>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-
-        <!-- Modal -->
-        <div class="modal fade" id="resetConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modal-red">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">RESET CONFIRMATION</h4>
-                    </div>
-                    <div class="modal-body">
-                        <label>You are going to reset user <label id="reset-user-email" style="color:blue;"></label>'s password.</label><br/>
-                        <label>Tempolary password will be sent to this email.</label><br/>
-                        <label>Click <b>Yes</b> to continue.</label>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <a id="resetYesButton" class="btn btn-warning" >Yes</a>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-
-
-
-
-        <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modal-blue">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">CREATE NEW USER</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Name</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_name"> field is required.</label>
-                                    <label class="error" id="error_name2"> name must be alphanumeric.</label>
-                                    <input class="form-control" id="name" placeholder="Name" name="name" type="text" autofocus>
-                                </div> 
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Email</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_email"> field is required.</label>
-                                    <label class="error" id="error_email2"> email has already exist.</label>
-                                    <label class="error" id="error_email3"> invalid email adress.</label>
-                                    <input class="form-control" id="email" placeholder="E-mail" name="email" type="email" autofocus>
-                                </div> 
-                            </div>
-                      </div>
-                      <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Role</label>&nbsp;&nbsp;
-                                    <label class="error" id="error_role"> field is required.</label>
-                                    <select name="role" id="role" class="form-control" >
-                                        <option value="0" selected="selected">-- SELECT ROLE --</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
-                                    </select> 
-                                </div>
-                            </div>
-                      </div>
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
-                        <button id="newUserSubmit" type="button" class="btn btn-primary">CREATE</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+       
 
 
         <div class="modal fade" id="editHealthData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

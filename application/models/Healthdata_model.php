@@ -45,38 +45,12 @@ class Healthdata_model extends CI_Model {
         return false;
     }
 
-
-
-
-
-    function update_user_details($postData){
-
-        $oldData = $this->get_user_by_id($postData['id']);
-
-        if($oldData[0]['email'] == $postData['email'])
-            $validate = true;
-        else
-            $validate = $this->validate_email($postData);
-
-        if($validate){
-            $data = array(
-                'email' => $postData['email'],
-                'name' => $postData['name'],
-                'role' => $postData['role'],
-            );
-            $this->db->where('user_id', $postData['id']);
-            $this->db->update('user', $data);
-
-            $record = "(".$oldData[0]['email']." to ".$postData['email'].", ".$oldData[0]['name']." to ".$postData['name'].",".$oldData[0]['role']." to ".$postData['role'].")";
-
-            $module = "User Management";
-            $activity = "update user ".$oldData[0]['email']."`s details ".$record;
-            $this->insert_log($activity, $module);
-            return array('status' => 'success', 'message' => $record);
-        }else{
-            return array('status' => 'exist', 'message' => '');
-        }
-
+    function get_health_record(){
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->join('health_data', 'customer.customer_id = health_data.customer_id');
+        $query=$this->db->get();
+        return $query->result();
     }
 
 }
