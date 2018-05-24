@@ -26,7 +26,7 @@
                         <li> 
                             <a href="<?=base_url('customer/customer_health_record')?>"><i class="fa fa-cutlery" aria-hidden="true"></i> Record of health data</a> </li>
                         <li>
-                            <a href="#"><i class="fa fa-cutlery fa-fw"></i> Nutrition plan</a>
+                            <a href="<?=base_url('nutritionplan/nutrition_plan_view')?>"><i class="fa fa-cutlery fa-fw"></i> Nutrition plan</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> Exercise plan</a>
