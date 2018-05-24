@@ -4,15 +4,15 @@ if(!defined('BASEPATH')){
 	exit('No direct script access allowed');
 }
 
-class nutrition_plan_model extends CI_Model {
+class exercise_plan_model extends CI_Model {
 	function __construct(){
 		parent::__construct();
 	}
 
-	function get_nutrition_plan_data(){
+	function get_exercise_plan_data(){
 		$this->db->select('*');
 		$this->db->from('customer');
-		$this->db->join('nutrition_plan','customer.customer_id = nutrition_plan.customer_id');
+		$this->db->join('exercise_plan','customer.customer_id = exercise_plan.customer_id');
 		$query=$this->db->get();
 		return $query->result();
 	}

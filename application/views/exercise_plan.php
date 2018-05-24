@@ -27,8 +27,8 @@
                                 <th>Surname</th>
                                 <th>DOB</th>
                                 <th>Phone</th>
-                                <th>Food</th>
-                                <th>Amount</th>
+                                <th>Exercise name</th>
+                                <th>Frequency</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Description</th>        
@@ -36,14 +36,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($nutrition_plan  as $row): ?>
+                            <?php foreach($exercise_plan  as $row): ?>
                             <tr>
                                 <td><?php echo $row->first_name; ?></td>
                                 <td><?php echo $row->last_name; ?></td>
                                 <td><?php echo $row->dob; ?></td>
                                 <td><?php echo $row->phone; ?></td>    
-                                <td><?php echo $row->food; ?></td>
-                                <td><?php echo $row->amount; ?></td>  
+                                <td><?php echo $row->exercise_name; ?></td>
+                                <td><?php echo $row->frequency; ?></td>  
                                 <td><?php echo $row->start_date; ?></td>  
                                 <td><?php echo $row->end_date; ?></td>  
                                 <td><?php echo $row->description; ?></td>

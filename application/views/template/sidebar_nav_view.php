@@ -29,7 +29,7 @@
                             <a href="<?=base_url('nutritionplan/nutrition_plan_view')?>"><i class="fa fa-cutlery fa-fw"></i> Nutrition plan</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Exercise plan</a>
+                            <a href="<?=base_url('Exerciseplan/exercise_plan_data')?>"><i class="fa fa-user fa-fw"></i> Exercise plan</a>
                         </li>
                         <li>
                             <a href="<?=base_url('customer/reports')?>"><i class="fa fa-user fa-fw"></i> Reports</a>
