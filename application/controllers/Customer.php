@@ -109,6 +109,17 @@ class Customer extends CI_Controller {
         echo json_encode($update);
     }
 
+    function update_healthdata_details(){
+        $this->ajax_checking();
+
+        $postData = $this->input->post();
+        $update = $this->healthdata_model->update_healthdata_details($postData);
+        if($update['status'] == 'success')
+            $this->session->set_flashdata('success', 'Customer Id '.$postData['customerid'].'`s Health Data Id'.$postData['healthdataid'].'details have been successfully updated!');
+
+        echo json_encode($update);
+    }
+
     function add_nutrition_plan() {
         $this->ajax_checking();
 
