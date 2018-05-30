@@ -13,6 +13,7 @@ class Customer extends CI_Controller {
         }
         $this->load->model('customer_model');
         $this->load->model('healthdata_model');
+        $this->load->model('nutrition_plan_model');
     }
     
     private function ajax_checking(){
@@ -105,6 +106,16 @@ class Customer extends CI_Controller {
             $this->session->set_flashdata('success', 'Customer '.$postData['name'].'`s details have been successfully updated!');
 
         echo json_encode($update);
+    }
+
+    function add_nutrition_plan() {
+        $this->ajax_checking();
+
+        $postData = $this->input->post();
+        $insert = $this->nutrition_plan_model->insert_nutrition_plan($postData);
+        if($insert['status'] == 'success')
+            $this->session->set_flashdata('success', 'Nutrition plan has been successfully recorded!');
+        echo json_encode($insert);
     }
 }
 
