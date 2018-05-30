@@ -16,6 +16,20 @@
         $("#error_bp2").hide();
         $("#error_dl").hide();
         $("#error_dl2").hide();
+        $("#edit-error_weight").hide();
+        $("#edit-error_weight2").hide();
+        $("#edit-error_height").hide();
+        $("#edit-error_height2").hide();
+        $("#edit-error_age").hide();
+        $("#edit-error_age2").hide();
+        $("#edit-error_waist").hide();
+        $("#edit-error_waist2").hide();
+        $("#edit-error_gl").hide();
+        $("#edit-error_gl2").hide();
+        $("#edit-error_bp").hide();
+        $("#edit-error_bp2").hide();
+        $("#edit-error_dl").hide();
+        $("#edit-error_dl2").hide();
         hide_loading();
     }
 
@@ -119,6 +133,128 @@
                 dataType: "text",
 
                 data: {customerid:customerid, weight:weight, height:height, age:age, waist:waist, gl:gl, bp:bp, dl:dl},
+                success: function (result) {
+                    var result = $.parseJSON(result);
+                    if(result.status=='success'){
+                        location.reload();
+                    }
+                    else if(result.status=='exist'){
+                        $("#error_email2").show();
+                        hide_loading();
+                    }
+                    else{
+                        alert("Oops there is something wrong!");
+                    }
+                  
+                },
+                error: ajax_error_handling
+            });
+        }else{
+            hide_loading();
+        }     
+    }
+
+    function edit_health_data_popup(healthdataid,customerid,weight,height,age,waist,gl,bp,dl){
+        $( "#edit-healthdata-id" ).val(healthdataid);
+        $( "#edit-customer-id" ).val(customerid);
+        $( "#edit-weight" ).val(weight);
+        $( "#edit-height" ).val(height);
+        $( "#edit-age" ).val(age);
+        $( "#edit-waist" ).val(waist);
+        $( "#edit-gl" ).val(gl);
+        $( "#edit-bp" ).val(bp);
+        $( "#edit-dl" ).val(dl);
+        
+        $('#editHealthDataSubmit').attr("onclick","update_health_data_details("+healthdataid+")");
+    }
+
+    function update_health_data_details(healthdataid){
+        hideErrorMessages();
+        show_loading();
+        var i=0;
+
+        var customerid = $( "#edit-customer-id" ).val().trim();
+        var weight = $( "#edit-weight" ).val().trim();
+        var height = $( "#edit-height" ).val().trim();
+        var age = $( "#edit-age" ).val().trim();
+        var waist = $( "#edit-waist" ).val().trim();
+        var gl = $( "#edit-gl" ).val().trim();
+        var bp = $( "#edit-bp" ).val().trim();
+        var dl = $( "#edit-dl" ).val().trim();
+
+        if(weight == ""){
+            $("#edit-error_weight").show();
+            i++;
+        }
+        else if (!weight.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_weight2").show();
+            i++;
+        }
+
+        if(height == ""){
+            $("#edit-error_height").show();
+            i++;
+        }
+        else if (!height.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_height2").show();
+            i++;
+        }
+
+        if(age == ""){
+            $("#edit-error_age").show();
+            i++;
+        }
+        else if (!age.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_age2").show();
+            i++;
+        }
+
+
+        if(waist == ""){
+            $("#edit-error_waist").show();
+            i++;
+        }
+        else if (!waist.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_waist2").show();
+            i++;
+        }
+
+        if(gl == ""){
+            $("#edit-error_gl").show();
+            i++;
+        }
+        else if (!gl.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_gl2").show();
+            i++;
+        }
+
+        if(bp == ""){
+            $("#edit-error_bp").show();
+            i++;
+        }
+        else if (!bp.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_bp2").show();
+            i++;
+        }
+
+        if(dl == ""){
+            $("#edit-error_dl").show();
+            i++;
+        }
+        else if (!dl.match(/^[A-Za-z0-9\s]+$/)) {
+            $("#edit-error_dl2").show();
+            i++;
+        }
+
+        if(i == 0){
+
+            $.ajax({
+                url: $("#base-url").val() + "customer/update_healthdata_details",
+                traditional: true,
+                type: "post",
+                dataType: "text",
+
+                data: {healthdataid:healthdataid, customerid:customerid, weight:weight, height:height, age:age, waist:waist, gl:gl, bp:bp, dl:dl},
                 success: function (result) {
                     var result = $.parseJSON(result);
                     if(result.status=='success'){
