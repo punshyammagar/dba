@@ -46,6 +46,7 @@
                                 <td>
                                     <a class="btn btn-primary" id="health-data-add" onclick="add_health_data_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addHealthData"> ADD HEALTH DATA </a>
                                     <a class="btn btn-primary" id="nutrition-plan-add" onclick="add_nutrition_plan_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addNutritionPlan"> ADD NUTRITION PLAN </a>
+                                    <a class="btn btn-primary" id="exercise-plan-add" onclick="add_exercise_plan_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addExercisePlan"> ADD EXERCISE PLAN </a>
                                     <a class="btn btn-primary" id="customer-edit"  onclick="edit_customer_popup('<?=$row->customer_id?>','<?=$row->dietitian_id?>','<?=$row->first_name?>','<?=$row->last_name?>','<?=$row->dob?>','<?=$row->phone?>','<?=$row->email?>','<?=$row->address?>');" data-toggle="modal" data-target="#editCustomerData"> EDIT CUSTOMER DATA </a>
                                 </td>
                             </tr>
@@ -208,6 +209,73 @@
         </div>
         <!-- /.modal -->
 
+
+        <div class="modal fade" id="addExercisePlan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-blue">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">ADD EXERCISE PLAN</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden"  id="exercise-plan_customer-id" value=""/>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Exercise Name</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_ename"> field is required.</label>
+                                    <label class="error" id="error_ename2"> exercise name must be alphanumeric.</label>
+                                    <input class="form-control" id="ename" placeholder="Exercise Name" name="ename" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Frequency</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_frequency"> field is required.</label>
+                                    <label class="error" id="error_frequency2"> frequency must be alphanumeric.</label>
+                                    <input class="form-control" id="frequency" placeholder="Frequency" name="frequency" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Start Date</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_esd"> field is required.</label>
+                                    <label class="error" id="error_esd2"> start date must be in dd/mm/yyyy.</label>
+                                    <label class="error" id="error_esd3"> invalid value for day.</label>
+                                    <label class="error" id="error_esd4"> invalid value for month.</label>
+                                    <input class="form-control" id="esd" placeholder="Start Date" name="esd" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>End Date</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_eed"> field is required.</label>
+                                    <label class="error" id="error_eed2"> end date must be in dd/mm/yyyy.</label>
+                                    <label class="error" id="error_eed3"> invalid value for day.</label>
+                                    <label class="error" id="error_eed4"> invalid value for month.</label>
+                                    <input class="form-control" id="eed" placeholder="End Date" name="eed" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Description</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_edescription"> field is required.</label>
+                                    <label class="error" id="error_edescription2"> description must be alphanumeric.</label>
+                                    <input class="form-control" id="edescription" placeholder="Description" name="edescription" type="text" autofocus>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                        <button id="newExercisePlanSubmit" type="button" class="btn btn-primary">ADD</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
 
 
         <div class="modal fade" id="editCustomerData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -374,3 +442,4 @@
         <script src="<?=base_url()?>assets/js/view/consumer_visit_record.js"></script>
         <script src="<?=base_url()?>assets/js/view/health_data.js"></script>
         <script src="<?=base_url()?>assets/js/view/nutrition_plan.js"></script>
+        <script src="<?=base_url()?>assets/js/view/exercise_plan.js"></script>
