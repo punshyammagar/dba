@@ -56,8 +56,7 @@
                                 <td><?php echo $row->dyslipidemia_level; ?></td>  
                                 <td><?php echo $row->date; ?></td>  
                                 <td>
-                                    <a class="btn btn-primary" id="health-data-add"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#newHealthDataSubmit"> Add Health Data </a>
-                                    <a class="btn btn-primary" id="health-data-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#editHealthData"> Edit Health Data </a>
+                                    <a class="btn btn-primary" id="health-data-edit"  onclick="edit_health_data_popup('<?=$row->healthdata_id?>','<?=$row->customer_id?>','<?=$row->weight?>','<?=$row->height?>','<?=$row->age?>','<?=$row->waist?>','<?=$row->glucose_level?>','<?=$row->blood_pressure?>','<?=$row->dyslipidemia_level?>');" data-toggle="modal" data-target="#editHealthData"> Edit Health Data </a>
                                     
                                 </td>
 
@@ -83,7 +82,8 @@
                         <h4 class="modal-title" id="myModalLabel">UPDATE HEALTH DATA</h4>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden"  id="edit-health-data" value=""/>
+                        <input type="hidden"  id="edit-healthdata-id" value=""/>
+                        <input type="hidden"  id="edit-customer-id" value=""/>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -158,3 +158,5 @@
         <!-- /#page-wrapper -->
         <?php $this->load->view('template/footer_view')?>
         <script src="<?=base_url()?>assets/js/view/consumer_visit_record.js"></script>
+        <?php $this->load->view('template/footer_view')?>
+        <script src="<?=base_url()?>assets/js/view/health_data.js"></script>
