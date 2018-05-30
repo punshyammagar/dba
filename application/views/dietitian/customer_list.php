@@ -45,6 +45,7 @@
                                 <td><?php echo $row->address; ?></td>  
                                 <td>
                                     <a class="btn btn-primary" id="health-data-add" onclick="add_health_data_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addHealthData"> ADD HEALTH DATA </a>
+                                    <a class="btn btn-primary" id="nutrition-plan-add" onclick="add_nutrition_plan_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addNutritionPlan"> ADD NUTRITION PLAN </a>
                                     <a class="btn btn-primary" id="customer-edit"  onclick="edit_customer_popup('<?=$row->customer_id?>','<?=$row->dietitian_id?>','<?=$row->first_name?>','<?=$row->last_name?>','<?=$row->dob?>','<?=$row->phone?>','<?=$row->email?>','<?=$row->address?>');" data-toggle="modal" data-target="#editCustomerData"> EDIT CUSTOMER DATA </a>
                                 </td>
                             </tr>
@@ -131,6 +132,74 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
                         <button id="newHealthDataSubmit" type="button" class="btn btn-primary">ADD</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+        <div class="modal fade" id="addNutritionPlan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-blue">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">ADD NUTRITION PLAN</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden"  id="nutrition-plan_customer-id" value=""/>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Food</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_food"> field is required.</label>
+                                    <label class="error" id="error_food2"> food must be alphanumeric.</label>
+                                    <input class="form-control" id="food" placeholder="Food" name="food" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Amount</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_amount"> field is required.</label>
+                                    <label class="error" id="error_amount2"> amount must be alphanumeric.</label>
+                                    <input class="form-control" id="amount" placeholder="Amount" name="amount" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Start Date</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_sd"> field is required.</label>
+                                    <label class="error" id="error_sd2"> start date must be in dd/mm/yyyy.</label>
+                                    <label class="error" id="error_sd3"> invalid value for day.</label>
+                                    <label class="error" id="error_sd4"> invalid value for month.</label>
+                                    <input class="form-control" id="sd" placeholder="Start Date" name="sd" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>End Date</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_ed"> field is required.</label>
+                                    <label class="error" id="error_ed2"> end date must be in dd/mm/yyyy.</label>
+                                    <label class="error" id="error_ed3"> invalid value for day.</label>
+                                    <label class="error" id="error_ed4"> invalid value for month.</label>
+                                    <input class="form-control" id="ed" placeholder="End Date" name="ed" type="text" autofocus>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Description</label> &nbsp;&nbsp;
+                                    <label class="error" id="error_description"> field is required.</label>
+                                    <label class="error" id="error_description2"> description must be alphanumeric.</label>
+                                    <input class="form-control" id="description" placeholder="Description" name="description" type="text" autofocus>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                        <button id="newNutritionPlanSubmit" type="button" class="btn btn-primary">ADD</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -304,3 +373,4 @@
         <?php $this->load->view('template/footer_view')?>
         <script src="<?=base_url()?>assets/js/view/consumer_visit_record.js"></script>
         <script src="<?=base_url()?>assets/js/view/health_data.js"></script>
+        <script src="<?=base_url()?>assets/js/view/nutrition_plan.js"></script>
