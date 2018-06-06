@@ -23,7 +23,7 @@ class Healthdata_model extends CI_Model {
                 'glucose_level' => $postData['gl'],
                 'blood_pressure' =>$postData['bp'],
                 'dyslipidemia_level' =>$postData['dl'],
-                'date' =>date('d/m/Y'),
+                'date' =>date('Y/m/d'),
             );
             $this->db->insert('health_data', $data);
             return array('status' => 'success', 'message' => '');
@@ -49,6 +49,17 @@ class Healthdata_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('customer');
         $this->db->join('health_data', 'customer.customer_id = health_data.customer_id');
+        $query=$this->db->get();
+        return $query->result();
+    }
+
+    function get_latest_health_record(){
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->join('health_data', 'customer.customer_id = health_data.customer_id');
+        $this->db->group_by('health_data.customer_id');
+        $this->db->order_by('date','desc');
+        $this->db->limit('1');
         $query=$this->db->get();
         return $query->result();
     }

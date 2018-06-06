@@ -53,6 +53,25 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+            <!-- testing latest health record data -->
+            <div>
+              <?php foreach($latest_health_record  as $row): ?>
+                            
+                                <h6><?php echo $row->first_name; ?></h6>
+                                <h6><?php echo $row->last_name; ?></h6>
+                                <h6><?php echo $row->dob; ?></h6>
+                                <h6><?php echo $row->phone; ?></h6>    
+                                <h6><?php echo $row->age; ?></h6>
+                                <h6><?php echo $row->weight; ?></h6>  
+                                <h6><?php echo $row->height; ?></h6>  
+                                <h6><?php echo $row->waist; ?></h6>  
+                                <h6><?php echo $row->glucose_level; ?></h6>  
+                                <h6><?php echo $row->blood_pressure; ?></h6> 
+                                <h6><?php echo $row->dyslipidemia_level; ?></h6>  
+                                <h6><?php echo $row->date; ?></h6>  
+                                
+              <?php endforeach; ?>
+            </div>
         </div>
 
 

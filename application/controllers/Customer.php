@@ -69,7 +69,7 @@ class Customer extends CI_Controller {
         $data = array(
             'formTitle' => 'Reports',
             'title' => 'Reports',
-            //'users' => $this->customer_model->get_customer_list(),
+            'latest_health_record' => $this->healthdata_model->get_latest_health_record(),
         );
 
         $this->load->view('template/header_view');
