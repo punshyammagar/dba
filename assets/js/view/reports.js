@@ -8,9 +8,9 @@
 
     function hideErrorMessages(){
         $("#error_smoker").hide();
-        $("#error_smoker2").hide();
+        //$("#error_smoker2").hide();
         $("#error_pa").hide();
-        $("#error_pa2").hide();
+        //$("#error_pa2").hide();
         hide_loading();
     }
 
@@ -123,49 +123,64 @@
     function analyse_additional_health_data(total_score) {
         var current_smoker = $( "#smoker" ).val().trim();
         var physical_activity = $( "#pa" ).val().trim();
+        var i=0;
 
         if (current_smoker=="Yes"||current_smoker=="yes"){
             $('#csYes').css({backgroundColor:'#fcc'});
             $('#cssc2').css({backgroundColor:'#fcc'});
             $('#css2').css({backgroundColor:'#fcc'});
             total_score = total_score + 2;
+            $("#error_smoker").hide();
         } else if (current_smoker=="No"||current_smoker=="no") {
             $('#csNo').css({backgroundColor:'#fcc'});
             $('#cssc0').css({backgroundColor:'#fcc'});
             $('#css0').css({backgroundColor:'#fcc'});
             total_score = total_score + 0;
-        } else
-        {
+            $("#error_smoker").hide();
+        } else if (current_smoker=="") {
+            $("#error_smoker").hide();
+        } else {
+            $("#error_smoker").show();
+            i++;
         }
-
         if (physical_activity=="Yes"||physical_activity=="yes"){
             $('#paYes').css({backgroundColor:'#fcc'});
             $('#pasc0').css({backgroundColor:'#fcc'});
             $('#pas0').css({backgroundColor:'#fcc'});
-            total_score = total_score + 0;   
+            total_score = total_score + 0;
+            $("#error_pa").hide();
         } else if (physical_activity=="No"||physical_activity=="no") {
             $('#paNo').css({backgroundColor:'#fcc'});
             $('#pasc2').css({backgroundColor:'#fcc'});
             $('#pas2').css({backgroundColor:'#fcc'});
             total_score = total_score + 2;
-        } else
-        {
-        }
-        if (total_score<=8) {
-            $('#num6').text(total_score);
-            $('#low_medium').css({'visibility':'visible'});
-            $('#medium_high').css({'visibility':'hidden'});
-            $('high_very_high').css({'visibility':'hidden'});
-        } else if (total_score>=9 && total_score<=15) {
-            $('#num11').text(total_score);
-            $('#medium_high').css({'visibility':'visible'});
-            $('#low_medium').css({'visibility':'hidden'});
-            $('high_very_high').css({'visibility':'hidden'});
+            $("#error_pa").hide();
+        } else if (physical_activity=="") {
+            $("#error_pa").hide();
         } else {
-            $('#num22').text(total_score);
-            $('high_very_high').css({'visibility':'visible'});
-            $('#low_medium').css({'visibility':'hidden'});
-            $('#medium_high').css({'visibility':'hidden'});
+            $("#error_pa").show();
+            i++;
         }
+        if(i==0){
+            if (total_score<=8) {
+                $('#num6').text(total_score);
+                $('#low_medium').css({'visibility':'visible'});
+                $('#medium_high').css({'visibility':'hidden'});
+                $('high_very_high').css({'visibility':'hidden'});
+            } else if (total_score>=9 && total_score<=15) {
+                $('#num11').text(total_score);
+                $('#medium_high').css({'visibility':'visible'});
+                $('#low_medium').css({'visibility':'hidden'});
+                $('high_very_high').css({'visibility':'hidden'});
+            } else {
+                $('#num22').text(total_score);
+                $('high_very_high').css({'visibility':'visible'});
+                $('#low_medium').css({'visibility':'hidden'});
+                $('#medium_high').css({'visibility':'hidden'});
+            }
+        } else {
+            hide_loading();
+        }
+        
     }   
 

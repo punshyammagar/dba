@@ -32,7 +32,7 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Description</th>        
-                                <th>&nbsp;</th>
+                                <!-- <th>&nbsp;</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -47,11 +47,11 @@
                                 <td><?php echo $row->start_date; ?></td>  
                                 <td><?php echo $row->end_date; ?></td>  
                                 <td><?php echo $row->description; ?></td>
-                                <td>
+                               <!--  <td>
                                     <a class="btn btn-primary" id="health-data-add"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#newHealthDataSubmit"> Add Health Data </a>
                                     <a class="btn btn-primary" id="health-data-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->customer_id?>','<?=$row->first_name?>');" data-toggle="modal" data-target="#editHealthData"> Edit Health Data </a>
                                     
-                                </td>
+                                </td> -->
 
                             </tr>
                             <?php endforeach; ?>

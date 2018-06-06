@@ -44,8 +44,8 @@
                                 <td><?php echo $row->email; ?></td>
                                 <td><?php echo $row->address; ?></td>  
                                 <td>
-                                    <a class="btn btn-primary" id="health-data-add" onclick="add_health_data_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addHealthData"> ADD HEALTH DATA </a>
-                                    <a class="btn btn-primary" id="nutrition-plan-add" onclick="add_nutrition_plan_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addNutritionPlan"> ADD NUTRITION PLAN </a>
+                                    <a class="btn btn-primary" style="margin-bottom: 2px;" id="health-data-add" onclick="add_health_data_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addHealthData"> ADD HEALTH DATA </a>
+                                    <a class="btn btn-primary" style="margin-bottom: 2px;" id="nutrition-plan-add" onclick="add_nutrition_plan_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addNutritionPlan"> ADD NUTRITION PLAN </a>
                                     <a class="btn btn-primary" id="exercise-plan-add" onclick="add_exercise_plan_popup('<?=$row->customer_id?>');" data-toggle="modal" data-target="#addExercisePlan"> ADD EXERCISE PLAN </a>
                                     <a class="btn btn-primary" id="customer-edit"  onclick="edit_customer_popup('<?=$row->customer_id?>','<?=$row->dietitian_id?>','<?=$row->first_name?>','<?=$row->last_name?>','<?=$row->dob?>','<?=$row->phone?>','<?=$row->email?>','<?=$row->address?>');" data-toggle="modal" data-target="#editCustomerData"> EDIT CUSTOMER DATA </a>
                                 </td>

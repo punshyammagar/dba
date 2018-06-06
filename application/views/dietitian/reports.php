@@ -86,16 +86,16 @@
                           <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Current Smoker?</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_smoker"> field is required.</label>
-                                    <label class="error" id="error_smoker2"> weight must be numeric.</label>
+                                    <label class="error" id="error_smoker"> please answer in Yes or No.</label>
+                                    <!-- <label class="error" id="error_smoker2"> weight must be numeric.</label> -->
                                     <input class="form-control" id="smoker" placeholder="Yes/No" name="smoker" type="text" autofocus>
                                 </div> 
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Physical Activity?</label> &nbsp;&nbsp;
-                                    <label class="error" id="error_pa"> field is required.</label>
-                                    <label class="error" id="error_pa2"> weight must be numeric.</label>
+                                    <label class="error" id="error_pa"> please answer in Yes or No.</label>
+                                    <!-- <label class="error" id="error_pa2"> weight must be numeric.</label> -->
                                     <input class="form-control" id="pa" placeholder="Yes/No" name="pa" type="text" autofocus>
                                 </div> 
                             </div>

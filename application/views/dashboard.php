@@ -16,7 +16,16 @@
                     <h3 class="page-header">Dashboard</h3>
                 </div>
                 <br>
-
+                <?php
+                $i = 0;
+                $total = array();
+                foreach ($no_of_users as $user) {
+                  $total[$i]=$user->total;
+                  $i++;
+                }
+                $admin = $total[0];
+                $diet = $total[1];
+                ?>
                 <div class="col-lg-6">
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <div id="donutchart"></div>
@@ -26,8 +35,8 @@
                       function drawChart() {
                         var data = google.visualization.arrayToDataTable([
                           ['User Group', 'No of User'],
-                          ['Administrator', 8],
-                          ['Dietitian', 4],
+                          ['Administrator', <?php echo $admin;?>],
+                          ['Dietitian', <?php echo $diet;?>],
                         ]);
 
 

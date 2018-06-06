@@ -17,22 +17,22 @@
                             </li>
                         <?php endif; ?>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Record consumer data<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-book fa-fw"></i> Record consumer data<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li> <a href="<?=base_url('customer/customer_list')?>">&raquo; Customer data</a> </li>
                                 <li> <a href="<?=base_url('customer/customer_visit_record')?>">&raquo; Record of visit</a> </li>
                             </ul>
                         </li>
                         <li> 
-                            <a href="<?=base_url('customer/customer_health_record')?>"><i class="fa fa-cutlery" aria-hidden="true"></i> Record of health data</a> </li>
+                            <a href="<?=base_url('customer/customer_health_record')?>"><i class="fa fa-heart" aria-hidden="true"></i> Record of health data</a> </li>
                         <li>
                             <a href="<?=base_url('nutritionplan/nutrition_plan_view')?>"><i class="fa fa-cutlery fa-fw"></i> Nutrition plan</a>
                         </li>
                         <li>
-                            <a href="<?=base_url('Exerciseplan/exercise_plan_data')?>"><i class="fa fa-user fa-fw"></i> Exercise plan</a>
+                            <a href="<?=base_url('Exerciseplan/exercise_plan_data')?>"><i class="fa fa-child fa-fw"></i> Exercise plan</a>
                         </li>
                         <li>
-                            <a href="<?=base_url('customer/reports')?>"><i class="fa fa-user fa-fw"></i> Reports</a>
+                            <a href="<?=base_url('customer/reports')?>"><i class="fa fa-bar-chart-o fa-fw"></i> Reports</a>
                         </li>
                     </ul>
                 </div>
