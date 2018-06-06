@@ -110,7 +110,7 @@
             $('high_very_high').css({'visibility':'hidden'});
         } else {
             $('#num22').text(total_score);
-            $('high_very_high').css({'visibility':'visible','backgroundColor':'#e0f3fc'});
+            $('#high_very_high').css({'visibility':'visible','backgroundColor':'#e0f3fc'});
             $('#rp1619,#rp20').css({'backgroundColor':'#e0f3fc'});
             $('#rp3,#rphh,#rpvh').css({'backgroundColor':'#d74e6a'});
             $('#low_medium').css({'visibility':'hidden'});
