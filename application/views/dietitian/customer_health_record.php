@@ -158,5 +158,4 @@
         <!-- /#page-wrapper -->
         <?php $this->load->view('template/footer_view')?>
         <script src="<?=base_url()?>assets/js/view/consumer_visit_record.js"></script>
-        <!-- <?php $this->load->view('template/footer_view')?> -->
         <script src="<?=base_url()?>assets/js/view/health_data.js"></script>

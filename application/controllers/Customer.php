@@ -75,7 +75,6 @@ class Customer extends CI_Controller {
         $this->load->view('template/header_view');
         $this->load->view('template/sidebar_nav_view');
         $this->load->view('dietitian/reports', $data);
-
     }
 
     function add_customer() {

@@ -59,9 +59,10 @@ class Healthdata_model extends CI_Model {
         $this->db->join('health_data', 'customer.customer_id = health_data.customer_id');
         $this->db->group_by('health_data.customer_id');
         $this->db->order_by('date','desc');
-        $this->db->limit('1');
+        //$this->db->limit('1');
         $query=$this->db->get();
         return $query->result();
+
     }
 
     function update_healthdata_details($postData){
